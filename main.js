@@ -1,4 +1,4 @@
-import './style.css'
+// import './style.css';
 
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
@@ -33,6 +33,11 @@ const material = new THREE.MeshStandardMaterial({
 const torus = new THREE.Mesh(geometry, material);
 //add torus to scene
 scene.add(torus);
+
+// const geometry = new THREE.TorusKnotGeometry( 10, 3, 16 );
+// const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+// const torusKnot = new THREE.Mesh( geometry, material );
+// scene.add( torusKnot );
 
 //lighting
 const pointLight = new THREE.PointLight(0xffffff);
@@ -126,6 +131,10 @@ function animate() {
   torus.rotation.x += 0.01;
   torus.rotation.y += 0.005;
   torus.rotation.z += 0.01;
+
+  // torusKnot.rotation.x += 0.01;
+  // torusKnot.rotation.y += 0.005;
+  // torusKnot.rotation.z += 0.01;
 
   controls.update;
 
