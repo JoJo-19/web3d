@@ -65,6 +65,18 @@ function addStar() {
 //200 random position stars
 Array(200).fill().forEach(addStar);
 
+
+//avatar
+const jojoTexture = new THREE.TextureLoader().load('jojo.jpeg');
+
+const jojo = new THREE.Mesh(
+  new THREE.BoxGeometry(3, 3, 3), 
+  new THREE.MeshBasicMaterial({map: jojoTexture})
+
+);
+
+scene.add(jojo);
+
 const spaceTexture = new THREE.TextureLoader().load('space.jpg');
 scene.background = spaceTexture;
 
@@ -82,6 +94,29 @@ const moon = new THREE.Mesh(
 );
 
 scene.add(moon);
+
+//changing moon position
+moon.position.z = 30;
+moon.position.setX(-10);
+
+
+
+function moveCamera() {
+  //where user is rn
+  const t = document.body.getBoundingClientRect().top;
+  moon.rotation.x += 0.05;
+  moon.rotation.y += 0.075;
+  moon.rotation.z += 0.05;
+
+  jojo.rotation.y += 0.01;
+  jojo.rotation.z += 0.01;
+//top value always negetive so multiply by negetive
+  camera.position.z = t * -0.01;
+  camera.position.x = t * -0.0002;
+  camera.position.y = t * -0.0002;
+}
+
+document.body.onscroll = moveCamera;
 
 
 //recursive function
